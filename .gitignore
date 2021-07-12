@@ -16,12 +16,11 @@ gurobi.log
 /benchmarks
 /logs
 /notebooks
-/data
 /data/links_p_nom.csv
+/data/bundle
 /cutouts
 
 doc/_build
 
-config.yaml
 
 dconf
