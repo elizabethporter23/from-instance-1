@@ -73,8 +73,8 @@ def attach_storageunits(n, costs):
 
     buses_i = n.buses.index
 
-    lookup_store = {"H2": "electrolysis", "battery": "battery inverter"}
-    lookup_dispatch = {"H2": "fuel cell", "battery": "battery inverter"}
+    lookup_store = {"H2": "electrolysis", "battery": "battery inverter", "gravitricity":"Gravitricity Energy", "vrfb":"Flow Battery Energy", "uhts":"Thermal Battery Energy"}
+    lookup_dispatch = {"H2": "fuel cell", "battery": "battery inverter", "gravitricity":"Gravitricity Power", "vrfb":"Flow Battery Power", "uhts":"Thermal Battery Power"}
 
     for carrier in carriers:
         n.madd("StorageUnit", buses_i, ' ' + carrier,
