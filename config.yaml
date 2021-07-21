@@ -218,7 +218,7 @@ solving:
     clip_p_max_pu: 0.01
     skip_iterations: true
     track_iterations: false
-    nhours: 24
+    #nhours: 24
   solver:
     name: gurobi
     threads: 4
