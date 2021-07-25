@@ -73,8 +73,8 @@ def attach_storageunits(n, costs):
 
     buses_i = n.buses.index
 
-    lookup_store = {"H2": "electrolysis", "battery": "battery inverter", "gravitricity":"Gravitricity Energy", "vrfb":"Flow Battery Energy", "uhts":"Thermal Battery Energy"}
-    lookup_dispatch = {"H2": "fuel cell", "battery": "battery inverter", "gravitricity":"Gravitricity Power", "vrfb":"Flow Battery Power", "uhts":"Thermal Battery Power"}
+    lookup_store = {"H2": "electrolysis", "battery": "battery inverter", "gravitricity":"Gravitricity Energy", "vrfb":"Flow Battery Energy","ptes":"Thermal Battery Energy"}
+    lookup_dispatch = {"H2": "fuel cell", "battery": "battery inverter", "gravitricity":"Gravitricity Power", "vrfb":"Flow Battery Power", "ptes":"Thermal Battery Power"}
 
     for carrier in carriers:
         n.madd("StorageUnit", buses_i, ' ' + carrier,
@@ -183,33 +183,33 @@ def attach_stores(n, costs):
                p_nom_extendable=True,
                marginal_cost=costs.at["gravitricity", "marginal_cost"]) #assuming charger and discharger are the same
 
-    if 'uhts' in carriers:
-        b_buses_i = n.madd("Bus", buses_i + " uhts", carrier="uhts", **bus_sub_dict)
+    if 'ptes' in carriers:
+        b_buses_i = n.madd("Bus", buses_i + " ptes", carrier="ptes", **bus_sub_dict)
 
         n.madd("Store", b_buses_i,
                bus=b_buses_i,
-               carrier='uhts',
+               carrier='ptes',
                e_cyclic=True,
                e_nom_extendable=True,
                capital_cost=costs.at['Thermal Battery Energy', 'capital_cost'],
-               marginal_cost=costs.at["uhts", "marginal_cost"])
+               marginal_cost=costs.at["ptes", "marginal_cost"])
 
         n.madd("Link", b_buses_i + " charger",
                bus0=buses_i,
                bus1=b_buses_i,
-               carrier='uhts charger',
+               carrier='ptes charger',
                efficiency=costs.at['Thermal Battery Power', 'efficiency'],
                capital_cost=costs.at['Thermal Battery Power', 'capital_cost'],
                p_nom_extendable=True,
-               marginal_cost=costs.at["uhts", "marginal_cost"])
+               marginal_cost=costs.at["ptes", "marginal_cost"])
 
         n.madd("Link", b_buses_i + " discharger",
                bus0=b_buses_i,
                bus1=buses_i,
-               carrier='uhts discharger',
+               carrier='ptes discharger',
                efficiency=costs.at['Thermal Battery Power','efficiency'],
                p_nom_extendable=True,
-               marginal_cost=costs.at["uhts", "marginal_cost"])
+               marginal_cost=costs.at["ptes", "marginal_cost"])
 
     if 'vrfb' in carriers:
         b_buses_i = n.madd("Bus", buses_i + " vrfb", carrier="vrfb", **bus_sub_dict)
