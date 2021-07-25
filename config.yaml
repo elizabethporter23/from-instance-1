@@ -50,7 +50,7 @@ electricity:
     H2: 168
     gravitricity: 2.4
     vrfb: 6
-    uhts: 6
+    ptes: 10
 
   powerplants_filter: false # use pandas query strings here, e.g. Country not in ['Germany']
   custom_powerplants: false # use pandas query strings here, e.g. Country in ['Germany']
@@ -203,7 +203,7 @@ costs:
     battery: 0.
     battery inverter: 0.
     gravitricity: 0.
-    uhts: 0.
+    ptes: 0.
     vrfb: 0.
   emission_prices: # in currency per tonne emission, only used with the option Ep
     co2: 0.
@@ -254,7 +254,7 @@ plotting:
 
   vre_techs: ["onwind", "offwind-ac", "offwind-dc", "solar", "ror"]
   conv_techs: ["OCGT", "CCGT", "Nuclear", "Coal"]
-  storage_techs: ["hydro+PHS", "battery", "H2", "gravitricity", "uhts", "vrfb"]
+  storage_techs: ["hydro+PHS", "battery", "H2", "gravitricity", "ptes", "vrfb"]
   load_carriers: ["AC load"]
   AC_carriers: ["AC line", "AC transformer"]
   link_carriers: ["DC line", "Converter AC-DC"]
@@ -294,7 +294,7 @@ plotting:
     "hydrogen storage" : "#ea048a"
     "battery" : "#b8ea04"
     "gravitricity" : "#b8ea04"
-    "uhts" : "#ea048a"
+    "ptes" : "#ea048a"
     "vrfb" : "#ea048a"
     "Electric load" : "#f9d002"
     "electricity" : "#f9d002"
