@@ -15,13 +15,13 @@ scenario:
   simpl: ['']
   ll: ['copt']
   clusters: [181]
-  opts: [Co2L-1H]
+  opts: [Co2L-2H]
 
 countries: ['AL', 'AT', 'BA', 'BE', 'BG', 'CH', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'ME', 'MK', 'NL', 'NO', 'PL', 'PT', 'RO', 'RS', 'SE', 'SI', 'SK']
 
 snapshots:
   start: "2013-01-01"
-  end: "2014-01-01"
+  end: "2013-01-02"
   closed: 'left' # end is not inclusive
 
 enable:
@@ -50,7 +50,7 @@ electricity:
     H2: 168
     gravitricity: 2.4
     vrfb: 6
-    uhts: 6
+    uhts: 100
 
   powerplants_filter: false # use pandas query strings here, e.g. Country not in ['Germany']
   custom_powerplants: false # use pandas query strings here, e.g. Country in ['Germany']
