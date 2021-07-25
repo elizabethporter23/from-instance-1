@@ -14,7 +14,7 @@ summary_dir: results
 scenario:
   simpl: ['']
   ll: ['copt']
-  clusters: [181]
+  clusters: [50]
   opts: [Co2L-2H]
 
 countries: ['AL', 'AT', 'BA', 'BE', 'BG', 'CH', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'ME', 'MK', 'NL', 'NO', 'PL', 'PT', 'RO', 'RS', 'SE', 'SI', 'SK']
@@ -41,7 +41,7 @@ electricity:
 
   extendable_carriers:
     Generator: []
-    StorageUnit: [battery, H2, gravitricity, uhts, vrfb] # battery, H2
+    StorageUnit: [battery, H2, gravitricity, ptes, vrfb] # battery, H2
     Store: []
     Link: []
 
@@ -50,7 +50,7 @@ electricity:
     H2: 168
     gravitricity: 2.4
     vrfb: 6
-    uhts: 100
+    ptes: 10
 
   powerplants_filter: false # use pandas query strings here, e.g. Country not in ['Germany']
   custom_powerplants: false # use pandas query strings here, e.g. Country in ['Germany']
