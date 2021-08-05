@@ -14,14 +14,14 @@ summary_dir: results
 scenario:
   simpl: ['']
   ll: ['copt']
-  clusters: [50]
-  opts: [Co2L-2H]
+  clusters: [5]
+  opts: [Co2L-1H]
 
-countries: ['AL', 'AT', 'BA', 'BE', 'BG', 'CH', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'ME', 'MK', 'NL', 'NO', 'PL', 'PT', 'RO', 'RS', 'SE', 'SI', 'SK']
+countries: ['GB']
 
 snapshots:
   start: "2013-01-01"
-  end: "2013-01-02"
+  end: "2013-03-01"
   closed: 'left' # end is not inclusive
 
 enable:

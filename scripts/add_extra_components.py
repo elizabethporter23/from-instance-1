@@ -73,7 +73,7 @@ def attach_storageunits(n, costs):
 
     buses_i = n.buses.index
 
-    lookup_store = {"H2": "electrolysis", "battery": "battery inverter", "gravitricity":"Gravitricity Energy", "vrfb":"Flow Battery Energy","ptes":"Thermal Battery Energy"}
+    lookup_store = {"H2": "electrolysis", "battery": "battery inverter", "gravitricity":"Gravitricity Power", "vrfb":"Flow Battery Power","ptes":"Thermal Battery Power"}
     lookup_dispatch = {"H2": "fuel cell", "battery": "battery inverter", "gravitricity":"Gravitricity Power", "vrfb":"Flow Battery Power", "ptes":"Thermal Battery Power"}
 
     for carrier in carriers:
@@ -192,7 +192,8 @@ def attach_stores(n, costs):
                e_cyclic=True,
                e_nom_extendable=True,
                capital_cost=costs.at['Thermal Battery Energy', 'capital_cost'],
-               marginal_cost=costs.at["ptes", "marginal_cost"])
+               marginal_cost=costs.at["ptes", "marginal_cost"],
+               efficiency=costs.at['Thermal Battery Energy','efficiency'])
 
         n.madd("Link", b_buses_i + " charger",
                bus0=buses_i,
@@ -220,7 +221,8 @@ def attach_stores(n, costs):
                e_cyclic=True,
                e_nom_extendable=True,
                capital_cost=costs.at['Flow Battery Energy', 'capital_cost'],
-               marginal_cost=costs.at["vrfb", "marginal_cost"])
+               marginal_cost=costs.at["vrfb", "marginal_cost"], 
+               efficiency=costs.at['Flow Battery Energy','efficiency'])
 
         n.madd("Link", b_buses_i + " charger",
                bus0=buses_i,
