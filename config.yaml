@@ -21,7 +21,7 @@ countries: ['GB']
 
 snapshots:
   start: "2013-01-01"
-  end: "2013-03-01"
+  end: "2014-01-01"
   closed: 'left' # end is not inclusive
 
 enable:
@@ -41,14 +41,14 @@ electricity:
 
   extendable_carriers:
     Generator: []
-    StorageUnit: [battery, H2, gravitricity, ptes, vrfb] # battery, H2
+    StorageUnit: [battery, H2, ptes, vrfb, gravitricity] # battery, H2
     Store: []
     Link: []
 
   max_hours:
     battery: 6
     H2: 168
-    gravitricity: 2.4
+    gravitricity: 2.44
     vrfb: 6
     ptes: 10
 

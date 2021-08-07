@@ -220,6 +220,42 @@ def add_battery_constraints(n):
                    link_p_nom[nodes + " discharger"].values))
     define_constraints(n, lhs, "=", 0, 'Link', 'charger_ratio')
 
+    nodes = n.buses.index[n.buses.carrier == "gravitricity_old"]
+    if nodes.empty or ('Link', 'p_nom') not in n.variables.index:
+        return
+    link_p_nom = get_var(n, "Link", "p_nom")
+    lhs = linexpr((1,link_p_nom[nodes + " charger"]),
+                  (-n.links.loc[nodes + " discharger", "efficiency"].values,
+                   link_p_nom[nodes + " discharger"].values))
+    define_constraints(n, lhs, "=", 0, 'Link', 'charger_ratio')
+
+    nodes = n.buses.index[n.buses.carrier == "gravitricity_new"]
+    if nodes.empty or ('Link', 'p_nom') not in n.variables.index:
+        return
+    link_p_nom = get_var(n, "Link", "p_nom")
+    lhs = linexpr((1,link_p_nom[nodes + " charger"]),
+                  (-n.links.loc[nodes + " discharger", "efficiency"].values,
+                   link_p_nom[nodes + " discharger"].values))
+    define_constraints(n, lhs, "=", 0, 'Link', 'charger_ratio')
+
+    nodes = n.buses.index[n.buses.carrier == "ptes"]
+    if nodes.empty or ('Link', 'p_nom') not in n.variables.index:
+        return
+    link_p_nom = get_var(n, "Link", "p_nom")
+    lhs = linexpr((1,link_p_nom[nodes + " charger"]),
+                  (-n.links.loc[nodes + " discharger", "efficiency"].values,
+                   link_p_nom[nodes + " discharger"].values))
+    define_constraints(n, lhs, "=", 0, 'Link', 'charger_ratio')
+
+    nodes = n.buses.index[n.buses.carrier == "vrfb"]
+    if nodes.empty or ('Link', 'p_nom') not in n.variables.index:
+        return
+    link_p_nom = get_var(n, "Link", "p_nom")
+    lhs = linexpr((1,link_p_nom[nodes + " charger"]),
+                  (-n.links.loc[nodes + " discharger", "efficiency"].values,
+                   link_p_nom[nodes + " discharger"].values))
+    define_constraints(n, lhs, "=", 0, 'Link', 'charger_ratio')
+
 
 def extra_functionality(n, snapshots):
     """

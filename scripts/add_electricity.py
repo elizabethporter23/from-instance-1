@@ -179,9 +179,13 @@ def load_costs(Nyears=1., tech_costs=None, config=None, elec_config=None):
         costs_for_storage(costs.loc["hydrogen storage"], costs.loc["fuel cell"],
                           costs.loc["electrolysis"], max_hours=max_hours['H2'])
 
-    costs.loc["gravitricity"] = \
+    costs.loc["gravitricity_old"] = \
         costs_for_storage(costs.loc["Gravitricity Energy"], costs.loc["Gravitricity Power"], 
-                          max_hours=max_hours["gravitricity"])
+                          max_hours=max_hours["gravitricity_old"])
+
+    costs.loc["gravitricity_new"] = \
+        costs_for_storage(costs.loc["Gravitricity New Build Energy"], costs.loc["Gravitricity New Build Power"],
+                          max_hours=maxhours["gravitricity_new"])
 
     costs.loc["ptes"]= \
         costs_for_storage(costs.loc["Thermal Battery Energy"], costs.loc["Thermal Battery Power"],
